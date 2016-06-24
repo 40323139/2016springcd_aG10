@@ -1,6 +1,6 @@
 from flask import Blueprint, request
  
-ag10_40323139_1 = Blueprint('ag10_40323139_1', __name__, url_prefix='/ag10_40323139_1', template_folder='templates')
+ag8_31 = Blueprint('ag8_31', __name__, url_prefix='/ag8_31', template_folder='templates')
  
 head_str = '''
 <!DOCTYPE html>
@@ -394,7 +394,7 @@ def eighteenthirty(x, y):
     degree = 20
     first_degree = 20.78+90
     startx = 0
-    starty = -100
+    starty = 0-215.16
     repeat = 360 / degree
     # 先畫出左邊第一關鍵節
     outstring = '''
@@ -415,8 +415,8 @@ x1, y1 = mychain.basic_rot('''+str(startx)+","+str(starty)+", "+str(first_degree
     # 接著處理右邊的非虛擬鍊條
     # 先畫出右邊第一關鍵節
  
-    p = -45
-    k = 120
+    p = 0-44.49
+    k = 0
     degree = 12
     first_degree = 4.78+90
     repeat = 360 / degree
@@ -446,7 +446,7 @@ m1, n1 = mychain.basic_rot(x1, y1, '''+str(first_degree)+''')
  
     # 下段連接直線
     # 從 x11, y11 作為起點
-    first_degree = -10.78+90+0.5
+    first_degree = -10.78+90
     repeat = 10
     outstring += '''
 r1, s1 = mychain.basic_rot(x11, y11, '''+str(first_degree)+''')
@@ -457,50 +457,50 @@ r1, s1 = mychain.basic_rot(x11, y11, '''+str(first_degree)+''')
     return outstring
  
  
-@ag10_40323139_1.route('/a')
+@ag8_31.route('/a')
 def draw_a():
     return head_str + chain_str + a(0, 0) + tail_str
  
  
-@ag10_40323139_1.route('/b')
+@ag8_31.route('/b')
 def draw_b():
    # 每個橫向字元距離為 65 pixels, 上下字距則為 110 pixels
     return head_str + chain_str + b(0+65, 0) + tail_str
  
  
-@ag10_40323139_1.route('/c')
+@ag8_31.route('/c')
 def draw_c():
     # 每個橫向字元距離為 65 pixels
     return head_str + chain_str + c(0+65*2, 0) + tail_str
  
  
-@ag10_40323139_1.route('/d')
+@ag8_31.route('/d')
 def draw_d():
     return head_str + chain_str + d(0+65*3, 0) + tail_str
  
  
-@ag10_40323139_1.route('/ab')
+@ag8_31.route('/ab')
 def draw_ab():
     #return head_str + chain_str + a(0, 0) + b(0+65, 0) + tail_str
     return head_str + chain_str + a(0, 0) + b(0, 0-110) + tail_str
  
  
-@ag10_40323139_1.route('/ac')
+@ag8_31.route('/ac')
 def draw_ac():
     return head_str + chain_str + a(0, 0) + c(0+65, 0) + tail_str
  
  
-@ag10_40323139_1.route('/bc')
+@ag8_31.route('/bc')
 def draw_bc():
     return head_str + chain_str + b(0, 0) + c(0+65, 0) + tail_str
  
  
-@ag10_40323139_1.route('/abc')
+@ag8_31.route('/abc')
 def draw_abc():
     return head_str + chain_str + a(0, 0) + b(0+65, 0) + c(0+65*2, 0) + tail_str
  
  
-@ag10_40323139_1.route('/aaaa')
+@ag8_31.route('/aaaa')
 def draw_aaaa():
     outstring = head_str + chain_str
     scale = 2
@@ -511,51 +511,51 @@ def draw_aaaa():
     #return head_str + chain_str + a(0, 0, scale=1) + a(0+65, 0, scale=0.8, color="red") + a(0+65*2, 0, scale=0.6) + a(0+65*3, 0, scale=0.4, color="red") + tail_str
  
  
-@ag10_40323139_1.route('/badc')
+@ag8_31.route('/badc')
 def draw_badc():
     return head_str + chain_str + b(0, 0) + a(0+65, 0) + d(0+65*2, 0) + c(0+65*3, 0) + tail_str
  
  
-@ag10_40323139_1.route('/abcd')
+@ag8_31.route('/abcd')
 def draw_abcd():
     #return head_str + chain_str + a(0, 0) + b(0+65, 0) + c(0+65*2, 0) + d(0+65*3, 0) + tail_str
     return head_str + chain_str + a(0, 110) + b(0, 110-110) + c(0, 110-110*2) + d(0, 110-110*3) + tail_str
  
  
-@ag10_40323139_1.route('/circle')
+@ag8_31.route('/circle')
 def drawcircle():
     return head_str + chain_str + circle(0, 0) + tail_str
  
  
-@ag10_40323139_1.route('/circle1/<degree>', defaults={'x': 0, 'y': 0})
-@ag10_40323139_1.route('/circle1/<x>/<degree>', defaults={'y': 0})
-@ag10_40323139_1.route('/circle1/<x>/<y>/<degree>')
-#@ag10_40323139_1.route('/circle1/<int:x>/<int:y>/<int:degree>')
+@ag8_31.route('/circle1/<degree>', defaults={'x': 0, 'y': 0})
+@ag8_31.route('/circle1/<x>/<degree>', defaults={'y': 0})
+@ag8_31.route('/circle1/<x>/<y>/<degree>')
+#@ag100.route('/circle1/<int:x>/<int:y>/<int:degree>')
 def drawcircle1(x,y,degree):
     return head_str + chain_str + circle1(int(x), int(y), int(degree)) + tail_str
  
  
-@ag10_40323139_1.route('/circle2/<degree>', defaults={'x': 0, 'y': 0})
-@ag10_40323139_1.route('/circle2/<x>/<degree>', defaults={'y': 0})
-@ag10_40323139_1.route('/circle2/<x>/<y>/<degree>')
-#@ag10_40323139_1.route('/circle2/<int:x>/<int:y>/<int:degree>')
+@ag8_31.route('/circle2/<degree>', defaults={'x': 0, 'y': 0})
+@ag8_31.route('/circle2/<x>/<degree>', defaults={'y': 0})
+@ag8_31.route('/circle2/<x>/<y>/<degree>')
+#@ag8_31.route('/circle2/<int:x>/<int:y>/<int:degree>')
 def drawcircle2(x,y,degree):
     return head_str + chain_str + circle2(int(x), int(y), int(degree)) + tail_str
  
  
-@ag10_40323139_1.route('/twocircle/<x>/<y>')
-@ag10_40323139_1.route('/twocircle', defaults={'x':0, 'y':0})
+@ag8_31.route('/twocircle/<x>/<y>')
+@ag8_31.route('/twocircle', defaults={'x':0, 'y':0})
 def drawtwocircle(x,y):
     return head_str + chain_str + twocircle(int(x), int(y)) + tail_str
  
  
-@ag10_40323139_1.route('/eighteenthirty/<x>/<y>')
-@ag10_40323139_1.route('/eighteenthirty', defaults={'x':0, 'y':0})
+@ag8_31.route('/eighteenthirty/<x>/<y>')
+@ag8_31.route('/eighteenthirty', defaults={'x':0, 'y':0})
 def draweithteenthirdy(x,y):
     return head_str + chain_str + eighteenthirty(int(x), int(y)) + tail_str
  
  
-@ag10_40323139_1.route('/snap')
+@ag8_31.route('/snap')
 # http://svg.dabbles.info/snaptut-base
 def snap():
     outstring = '''
@@ -634,7 +634,7 @@ document['tux'].bind('mouseleave', hoverout)
     return outstring
  
  
-@ag10_40323139_1.route('/snap_link')
+@ag8_31.route('/snap_link')
 # http://svg.dabbles.info/
 def snap_link():
     outstring = '''
@@ -716,7 +716,7 @@ g4.animate( { 'transform' : 'r360,25,25' },4000)
     return outstring
  
  
-@ag10_40323139_1.route('/snap_gear')
+@ag8_31.route('/snap_gear')
 def snap_gear():
     outstring = '''
 <!DOCTYPE html>
@@ -755,18 +755,16 @@ s.line(0, 0, 100, 100).attr({ 'fill': "silver", 'stroke': "black", 'strokeWidth'
 </html>
 '''
     return outstring
-@ag10_40323139_1.route('/gears', defaults={'n1':17,'n2':29,'n3':15,'n4':25})
-@ag10_40323139_1.route('/gears/<n1>/<n2>/<n3>/<n4>')
-def gears(n1, n2, n3, n4):
+@ag8_31.route('/gear_31')
+def gear_31():
     outstring = '''
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>網際 snap 繪圖</title>
+    <title>網際 2D 繪圖</title>
     <!-- IE 9: display inline SVG -->
     <meta http-equiv="X-UA-Compatible" content="IE=9">
-
 <script type="text/javascript" src="http://brython.info/src/brython_dist.js"></script>
 <script type="text/javascript" src="http://2015fallhw.github.io/cptocadp/static/Cango-8v03.js"></script>
 <script type="text/javascript" src="http://2015fallhw.github.io/cptocadp/static/Cango2D-7v01-min.js"></script>
@@ -861,28 +859,26 @@ def spur(cx, cy, m, n, pa, theta):
           'strokeColor':'blue', 'lineWidth': 1})
     cgo.render(Line)
  
-# 4個齒輪的齒數
+# 3個齒輪的齒數
 n1 = 17
 n2 = 29
 n3 = 15
-n4 = 25
-
- 
+n4 = 40
+n5 = 20
 # m 為模數, 根據畫布的寬度, 計算適合的模數大小
 # Module = mm of pitch diameter per tooth
 # 利用 80% 的畫布寬度進行繪圖
 # 計算模數的對應尺寸
-m = canvas.width*0.8/(n1+n2+n3+n4)
+m = canvas.width*0.8/(n1+n2+n3+n4+n5)
  
 # 根據齒數與模組計算各齒輪的節圓半徑
 pr1 = n1*m/2
 pr2 = n2*m/2
 pr3 = n3*m/2
 pr4 = n4*m/2
- 
+pr5 = n5*m/2
 # 畫布左右兩側都保留畫布寬度的 10%
 # 依此計算對應的最左邊齒輪的軸心座標
-
 cx = canvas.width*0.1+pr1
 cy = canvas.height/2
  
@@ -901,5 +897,89 @@ spur(cx+pr1+pr2, cy, m, n2, pa, 180-180/n2)
 # 而當第2齒從與第3齒囓合的定位線, 逆時鐘旋轉 180-180/n2 角度後, 原先囓合的第3齒必須要再配合旋轉 (180-180/n2 )*n2/n3
 spur(cx+pr1+pr2+pr2+pr3, cy, m, n3, pa, 180-180/n3+(180-180/n2)*n2/n3)
 spur(cx+pr1+pr2+pr2+2*pr3+pr4, cy, m, n4, pa, 180-180/n4+(180-180/n3)*n3/n4)
-</script>'''
+spur(cx+pr1+pr2+pr2+2*pr3+2*pr4+pr5, cy, m, n5, pa, 180-180/n5+(180-180/n4)*n4/n5)
+
+</script>
+
+
+<script type='text/javascript'>
+var onWebChat={ar:[], set: function(a,b){if (typeof onWebChat_==='undefined'){this.ar.
+push([a,b]);}else{onWebChat_.set(a,b);}},get:function(a){return(onWebChat_.get(a));},w
+:(function(){ var ga=document.createElement('script'); ga.type = 'text/javascript';ga.
+async=1;ga.src='//www.onwebchat.com/clientchat/795d781612868f02aa4bb0552c0655a5/1/1';
+var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})()}
+</script>
+</body>
+</html>
+'''
     return outstring
+
+@ag8_31.route('/D_link')
+def D_link():
+    outstring = '''
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>網際 2D 繪圖</title>
+    <!-- IE 9: display inline SVG -->
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+<script type="text/javascript" src="http://brython.info/src/brython_dist.js"></script>
+<script type="text/javascript" src="http://cptocadp-2015fallhw.rhcloud.com/static/Cango-8v03.js"></script>
+<script type="text/javascript" src="http://cptocadp-2015fallhw.rhcloud.com/static/Cango2D-6v13.js"></script>
+<script type="text/javascript" src="http://cptocadp-2015fallhw.rhcloud.com/static/CangoAxes-1v33.js"></script>
+
+</head>
+<body>
+
+<script>
+window.onload=function(){
+brython(1);
+}
+</script>
+
+<canvas id="plotarea" width="700" height="800"></canvas>
+
+<script type="text/python">
+from javascript import JSConstructor
+from browser import window
+import math
+
+cango = JSConstructor(window.Cango)
+cobj = JSConstructor(window.Cobj)
+shapedefs = window.shapeDefs
+obj2d = JSConstructor(window.Obj2D)
+cgo = cango("plotarea")
+
+cgo.setWorldCoords(-250, -250, 500, 500) 
+
+
+        
+#cgo.drawText("使用 Cango 繪圖程式庫!", 0, 0, {"fontSize":60, "fontWeight": 1200, "lorg":5 })
+
+deg = math.pi/180  
+def O(x, y, rx, ry, rot, color, border, linewidth):
+    # 旋轉必須要針對相對中心 rot not working yet
+    chamber = "M78.000 5.000 L5.000,5.000 L5.000,74.800 L78.000,74.800 L78.000,5.000 M21.800 30.602 A9.802,9.802 0 0,1 11.998,20.800 A9.802,9.802 0 0,1 21.800,10.998 A9.802,9.802 0 0,1 31.602,20.800 A9.802,9.802 0 0,1 21.800,30.602 M60.200 33.549 A12.149,12.149 0 0,1 48.051,21.400 A12.149,12.149 0 0,1 60.200,9.251 A12.149,12.149 0 0,1 72.349,21.400 A12.149,12.149 0 0,1 60.200,33.549 M61.200 64.400 L21.200,64.400 L21.200,44.400 L61.200,44.400 L61.200,64.400 "
+    cgoChamber = window.svgToCgoSVG(chamber)
+    cmbr = cobj(cgoChamber, "SHAPE", {
+            "fillColor": color,
+            "border": border,
+            "strokeColor": "tan",
+            "lineWidth": linewidth })
+    
+
+    # hole 為原點位置
+    hole = cobj(shapedefs.circle(4), "PATH")
+    cmbr.appendPath(hole)
+
+    # 放大 5 倍
+    cgo.render(cmbr, x, y, 1, rot)
+
+O(0, 0, 0, 0, 0, "orange", True, 5)
+
+</script>
+</body></html>
+'''
+    return outstring
+
